@@ -82,6 +82,7 @@ https://www.apachefriends.org/download.html
 - Open XAMPP or WAMP
 
 - Start Apache and MySQL
+  
 
 3. **Import the Database**
 
@@ -93,6 +94,7 @@ https://www.apachefriends.org/download.html
     ```bash
     /backend/blog.sql
     ```
+    
 4. **Set Up the Database Connection**
 ```php
 $dsn = 'mysql:host=localhost;dbname=blog';
