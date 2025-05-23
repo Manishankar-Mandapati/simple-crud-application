@@ -75,7 +75,7 @@ CRUD_Application/
    ```bash
    git clone https://github.com/Manishankar-Mandapati/simple-crud-application.git
 
-2. **download and Start your local server** (e.g., using XAMPP or WAMP)
+2. **Download and Start your local server** (e.g., using XAMPP or WAMP)
 In my case i'm using xampp here is the link for xampp
 https://www.apachefriends.org/download.html
 
