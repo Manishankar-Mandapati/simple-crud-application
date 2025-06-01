@@ -75,13 +75,14 @@ CRUD_Application/
    ```bash
    git clone https://github.com/Manishankar-Mandapati/simple-crud-application.git
 
-2. **download and Start your local server** (e.g., using XAMPP or WAMP)
+2. **Download and Start your local server** (e.g., using XAMPP or WAMP)
 In my case i'm using xampp here is the link for xampp
 https://www.apachefriends.org/download.html
 
 - Open XAMPP or WAMP
 
 - Start Apache and MySQL
+  
 
 3. **Import the Database**
 
@@ -93,6 +94,7 @@ https://www.apachefriends.org/download.html
     ```bash
     /backend/blog.sql
     ```
+    
 4. **Set Up the Database Connection**
 ```php
 $dsn = 'mysql:host=localhost;dbname=blog';
