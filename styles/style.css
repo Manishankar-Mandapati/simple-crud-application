@@ -89,6 +89,12 @@ nav{
     align-items: center;
     justify-content: space-between;
     border-bottom: 2px solid rgb(106, 106, 106);
+    width: 100%;
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    background-color: black;
 }
 
 .logo span{
@@ -130,7 +136,7 @@ nav{
 
 /* --------------------------- form css starts here -------------------------- */
 
-form{
+.form{
     width: 500px;
     gap: 10px;
     border: 3px solid rgb(132, 132, 132);
@@ -166,11 +172,11 @@ textarea{
     font-family: "poppins";
 }
 
-form div a{
+.form div a{
     font-size: 15px;
 }
 
-form div a:hover{
+.form div a:hover{
     color: var(--color-primary);
 }
 
@@ -194,10 +200,19 @@ form div a:hover{
 
 /* -------------------------------index css starts from here ------------------------------------- */
 .container{
-    padding: 1rem;
-    flex-wrap: wrap;
-    gap: 3rem;
+   display: flex;
+   justify-content: center;
+   padding: 2rem 0rem;
 }
+
+.wrapper{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    gap: 2rem;
+    min-height: 100vh;
+}
+
 .post-container{
     width: 300px;
     height: 400px;
@@ -261,4 +276,52 @@ form div a:hover{
 
 .post-btns *{
     width: 80px;
+}
+
+/* ------------------------------------------pagination css starts here --------------------------------- */
+.pagination{
+    /* background-color: red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    gap: 1rem;
+}
+
+.pagination .btn{
+    width: 100px;
+    background-color: transparent;
+    text-align: center;
+    /* border: 1px solid; */
+    padding: .2rem;
+    border-radius: 0;
+}
+
+.pagination .btn:hover{
+    background-color: var(--color-primary);
+}
+
+.pagination .page_buttons{
+    /* background-color: red; */
+    padding: 5px 10px;
+}
+
+.pagination .page_btn{
+    background-color: transparent;
+    outline: none;
+    border: none;
+    padding: 5px 10px;
+    font-size: 16px;
+    text-align: center;
+}
+
+.pagination .page_buttons a{
+    padding: 5px;
+    background-color: rgba(87, 87, 87, 0.499);
+    color: black;
+}
+
+.pagination a.active{
+    background-color: blue;
+    border: none;
 }

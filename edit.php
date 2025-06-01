@@ -24,7 +24,7 @@ if(isset($_SESSION['username'])){
 else
 {
     echo '<script>window.alert("please login")
-        window.location.href = "/CRUD_Application/index.php"
+        window.location.href = "/CRUD_Application/login.php"
     </script>';
     // header("Location:login.php");
 }
@@ -54,7 +54,7 @@ else
         }
     ?>
     <div class="full-screen flex-box content-center">
-        <form class="flex-box flex-col" action="edit.php?id=<?php echo $search_element?>" method="post">
+        <form class="flex-box flex-col form" action="edit.php?id=<?php echo $search_element?>" method="post">
             <h2 class="form-title">Edit Post</h2>
             <input type="text" name="title" id="" value="<?php echo $title?>">
             <textarea name="content" id="" cols="30" rows="10"><?php echo $content?></textarea>

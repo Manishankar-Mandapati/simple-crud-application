@@ -26,6 +26,12 @@ if (session_status() === PHP_SESSION_NONE) {
                 }
              ?>
         </div>
+    <div class="searchform">
+            <form action="search.php" method="get" >
+                <input type="text" name="search" placeholder="search...">
+                <input type="submit" name="search_button" value="search" class="btn">
+            </form>
+    </div>
 
         <div class="nav-links flex-box">
            <?php 

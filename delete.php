@@ -18,4 +18,9 @@ if(isset($_SESSION["username"]))
  {
     echo $e;
  }
+}else{
+    echo '<script>window.alert("please login")
+        window.location.href = "/CRUD_Application/login.php"
+    </script>';
+   // header("Location:register.php");
 }

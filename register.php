@@ -65,7 +65,7 @@ if(isset($_POST["submit"]))
                      </div>';
             }
         ?>
-        <form class="flex-box flex-col" action="register.php" method="post">
+        <form class="flex-box flex-col form" action="register.php" method="post">
             <input type="text" name="username" id="" placeholder="Username">
             <input type="password" name="password" id="" placeholder="Password">
             <input type="password" name="cpassword" id="" placeholder="Confirm Password">

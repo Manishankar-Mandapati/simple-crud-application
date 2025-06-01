@@ -68,7 +68,7 @@
                      </div>';
             }
         ?>
-        <form class="flex-box flex-col" action="login.php" method="post">
+        <form class="flex-box flex-col form" action="login.php" method="post">
             <input type="text" name="username" id="" placeholder="Username">
             <input type="password" name="password" id="" placeholder="Password">
             <div class="flex-box content-space">

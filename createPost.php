@@ -42,7 +42,7 @@ else
         include("nav.php");
     ?>
     <div class="full-screen flex-box content-center">
-        <form class="flex-box flex-col" action="createPost.php" method="post">
+        <form class="flex-box flex-col form" action="createPost.php" method="post">
             <h2 class="form-title">Create Post</h2>
             <input type="text" name="title" id="" placeholder="Title">
             <textarea name="content" id="" cols="30" rows="10" placeholder="Description"></textarea>
