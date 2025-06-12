@@ -21,13 +21,13 @@ A blog-style CRUD (Create, Read, Update, Delete) web application built using **P
 
 ## 🛠 Tech Stack
 
-**Frontend:** HTML, CSS
+- **Frontend:** HTML, CSS
 
-**Backend:** PHP 8.0.30
+- **Backend:** PHP 8.0.30
 
-**Database:** MySQL
+- **Database:** MySQL
 
-**Local Server:** XAMPP
+- **Local Server:** XAMPP
 
 ## 🗄️ Database Schema
 **Database Name :- blog**
