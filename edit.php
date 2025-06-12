@@ -45,8 +45,10 @@ else
     ?>
     <?php
         global $conn;
-        $sql="SELECT title,content FROM posts WHERE id='$search_element'";
-        $stmt=$conn->query($sql);
+        $sql="SELECT title,content FROM posts WHERE id=:searchElement";
+        $stmt=$conn->prepare($sql);
+        $stmt->bindValue(':searchElement',$search_element);
+        $stmt->execute();
         while($DataRows=$stmt->fetch())
         {
             $title=$DataRows["title"];
@@ -58,7 +60,7 @@ else
             <h2 class="form-title">Edit Post</h2>
             <input type="text" name="title" id="" value="<?php echo $title?>">
             <textarea name="content" id="" cols="30" rows="10"><?php echo $content?></textarea>
-            <button class="btn" type="submit" name="submit">Edit</button>
+            <button class="btn" type="submit" name="submit">Save Changes</button>
         </form>
     </div>
 </body>

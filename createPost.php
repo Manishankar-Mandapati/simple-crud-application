@@ -6,11 +6,13 @@ if(isset($_SESSION['username'])){
         if(!empty($_POST['title']) && !empty($_POST['content'])){
             $title=$_POST['title'];
             $content=$_POST['content'];
+            $userid=$_SESSION["userid"];
             global $conn;
-            $sql= "INSERT INTO posts (title,content) VALUES(:Title,:Content)";
+            $sql= "INSERT INTO posts (title,content,user_id) VALUES(:Title,:Content,:Userid)";
             $stmt=$conn->prepare($sql);
             $stmt->bindValue(':Title',$title);
             $stmt->bindValue(':Content',$content);
+            $stmt->bindValue(':Userid',$userid);
             $Execute=$stmt->execute();
             if($Execute){
                 header("Location:index.php");

@@ -1,4 +1,5 @@
 <?php 
+global $conn;
     try {
         $DSN = 'mysql:host=localhost;dbname=blog';
         $conn = new PDO($DSN, "root", "");

@@ -3,17 +3,18 @@
     require_once('pagination.php');
     require_once('backend/utilities.php');
     session_start();
-    $success = ['status' => false, 'message' => ""];
-    set_Success($success);
 
-    $query = "SELECT COUNT(*) AS total FROM posts";
-    $total_posts = getTotalPosts($query, $conn);
+    $user_id = $_SESSION['userid'];
+
+    $query = "SELECT COUNT(*) AS total FROM posts where user_id = :userid";
+    $bindValues = [":userid" => $user_id];
+    $total_posts = getTotalPosts($query, $conn, $bindValues);
 
     
-    $query = "SELECT * FROM posts LIMIT :start, :end ";
+    $query = "SELECT * FROM posts  where user_id = :userid LIMIT :start, :end ";
     $pagination_info = [];
 
-    $posts = pagination_query($total_posts, $query, $conn, $pagination_info);
+    $posts = pagination_query($total_posts, $query, $conn, $pagination_info, $bindValues);
     $page=$pagination_info['page'];
     $total_pages = $pagination_info["total_pages"];
     $start = $pagination_info['start'];
@@ -28,13 +29,7 @@
     <title>My Blogs</title>
 </head>
 <body>
-    <?php include("nav.php"); 
-    if($success['status']){
-                    echo '<div class="warning-container success">
-                            <p>'.$success['message'].'</p>
-                        </div>';
-        }
-    ?>
+    <?php include("nav.php"); ?>
     <div class="container">
         <div class="wrapper">
              <?php
@@ -50,8 +45,8 @@
                 </div>
                 <div class="post-btns flex-box content-center">
                     <a href="view.php?id=<?php echo $post['id'];?>"><button class="btn">view</button></a>
-                    <!-- <a href="edit.php?id=<?php echo $post['id'];?>"><button class="btn">Edit</button></a>
-                    <a href="delete.php?id=<?php echo $post['id'];?>"><button class="btn">Delete</button></a> -->
+                    <a href="edit.php?id=<?php echo $post['id'];?>"><button class="btn">Edit</button></a>
+                    <a href="delete.php?delete=post&id=<?php echo $post['id'];?>"><button class="btn">Delete</button></a>
                 </div>
             </div>
         <?php } ?>
@@ -75,12 +70,5 @@
 
         <a href="?page_no=<?php echo $total_pages?>" class="btn">last</a>
     </div>
-
-     <script>
-        let success = document?.querySelector(".warning-container");
-        setInterval(() => {
-            success.classList.remove('success');
-        }, 3000)
-    </script>
 </body>
 </html>

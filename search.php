@@ -1,46 +1,32 @@
 <?php
 require_once("backend/dbConnection.php");
-$total_posts = 0;
-if(isset($_GET['search_button']))
-{
-    if(!empty($_GET["search"]))
-    {   $posts_per_page = 6;
+require_once("backend/utilities.php");
+require_once("pagination.php");
+
+$total_pages = 0;
+
+if(isset($_GET['search_button'])){
+    if(!empty($_GET["search"])){   
+        $posts_per_page = 6;
         $search=$_GET['search'];
-        $sql="select count(*) as total from posts where lower(title) like lower(:searcH) or lower(content) like lower(:searcH)";
-        $stmt=$conn->prepare($sql);
-        $stmt->bindValue(':searcH','%' . $search . '%');
-        $stmt->execute();
-        $total_posts = $stmt->fetch(PDO::FETCH_ASSOC)['total'];
-        $total_pages = ceil($total_posts / $posts_per_page);
-        
-        $page = isset($_GET["page"]) ? (int) $_GET["page"] : 1;
-        $page = max(1, min($page, $total_pages));
-        $starting_page = ($page-1) * $posts_per_page; 
+     
+        $query="select count(*) as total from posts where lower(title) like lower(:searcH) or lower(content) like lower(:searcH)";
+        $bindvalues = [":searcH" => '%' . $search . '%'];
+        $total_posts = getTotalPosts($query,$conn,$bindvalues);
 
-        $sql = "select * from posts where lower(title) like lower(:searcH) or lower(content) like lower(:searcH) limit :start, :end";
-        $stmt = $conn->prepare($sql);
-        $stmt->bindValue(':searcH','%' . $search . '%');
-        $stmt->bindValue(':start', $starting_page, PDO::PARAM_INT);
-        $stmt->bindValue(':end', $posts_per_page, PDO::PARAM_INT);
-        $stmt->execute();
-        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $query = "select * from posts where lower(title) like lower(:searcH) or lower(content) like lower(:searcH) limit :start, :end";
+        $pagination_info = [];
 
-        if ($page == 1) {
-            $start = 1;
-            $end = min(3, $total_pages);
-        } elseif ($page == $total_pages) {
-            $start = max(1, $total_pages - 2);
-            $end = $total_pages;
-        } elseif($page == $total_pages-1){
-            $start = $page-1;
-            $end = $total_pages;
-        }else {
-            $start = $page-1;
-            $end = $page + 1;
-        }
-        }else{
+        $results = pagination_query($total_posts,$query, $conn,$pagination_info,$bindvalues);
+        $page=$pagination_info['page'];
+        $total_pages = $pagination_info["total_pages"];
+        $start = $pagination_info['start'];
+        $end = $pagination_info['end'];
+
+    }else{
             header("Location: index.php");
-        }
+            exit();
+    }
 }
 ?>
 
@@ -72,10 +58,8 @@ if($total_posts > 0){?>
                     <h3 class="post-title"><?php echo $result['title']?></h3>
                     <p class="post-description"><?php echo substr($result['content'],0, 150).'...'?></p>
                 </div>
-                <div class="post-btns flex-box">
-                        <!-- <button class="btn">view</button> -->
-                    <a href="edit.php?id=<?php echo $result['id'];?>"><button class="btn">Edit</button></a>
-                    <a href="delete.php?id=<?php echo $result['id'];?>"><button class="btn">Delete</button></a>
+                <div class="post-btns flex-box content-center">
+                    <a href="view.php?id=<?php echo $result['id'];?>"><button class="btn">view</button></a>
                 </div>
             </div>
          <?php } ?>
@@ -83,21 +67,21 @@ if($total_posts > 0){?>
     </div>
 
     <div class="pagination">
-            <a class="btn" href="?search=<?php echo urlencode($search); ?>&search_button=Search&page=1">first</a>
+            <a class="btn" href="?search=<?php echo urlencode($search); ?>&search_button=Search&page_no=1">first</a>
 
-            <a class="btn" href="?search=<?php echo urlencode($search); ?>&search_button=Search&page=<?php echo $page > 1 ? $page - 1 : 1; ?>">&laquo; Previous</a>
+            <a class="btn" href="?search=<?php echo urlencode($search); ?>&search_button=Search&page_no=<?php echo $page > 1 ? $page - 1 : 1; ?>">&laquo; Previous</a>
 
             <div class="page_buttons">
                 <?php for($i = $start; $i<= $end; $i++) {
                 $activeClass = ($i == $page) ? 'active' : "";    
                 ?>
-                    <a href="?search=<?php echo urlencode($search);?>&search_button=Search&page=<?php echo $i;?>" class="<?php echo $activeClass?>"><span class="page_btn"><?php echo $i?></span></a>
+                    <a href="?search=<?php echo urlencode($search);?>&search_button=Search&page_no=<?php echo $i;?>" class="<?php echo $activeClass?>"><span class="page_btn"><?php echo $i?></span></a>
                 <?php } ?>
             </div>
 
-            <a class="btn" href="?search=<?php echo urlencode($search); ?>&search_button=Search&page=<?php echo $page < $total_pages ? $page + 1 : $total_pages; ?>">Next &raquo;</a>
+            <a class="btn" href="?search=<?php echo urlencode($search); ?>&search_button=Search&page_no=<?php echo $page < $total_pages ? $page + 1 : $total_pages; ?>">Next &raquo;</a>
 
-            <a class="btn" href="?search=<?php echo urlencode($search); ?>&search_button=Search&page=<?php echo $total_pages; ?>">last</a>
+            <a class="btn" href="?search=<?php echo urlencode($search); ?>&search_button=Search&page_no=<?php echo $total_pages; ?>">last</a>
         </div>
 
         <?php
