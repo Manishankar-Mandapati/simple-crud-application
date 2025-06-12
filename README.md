@@ -68,7 +68,7 @@ A blog-style CRUD (Create, Read, Update, Delete) web application built using **P
 - ✅ Length-limited input:
     - Username: max 20 chars
     - Password: max 12 chars
-📄 Full security overview: [SECURITY.md]([./SECURITY.md](https://github.com/Manishankar-Mandapati/simple-crud-application?tab=security-ov-file))
+📄 Full security overview: [SECURITY.md](https://github.com/Manishankar-Mandapati/simple-crud-application?tab=security-ov-file)
 
 ## 📂 Folder Structure
 ```
