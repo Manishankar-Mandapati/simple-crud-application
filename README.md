@@ -21,13 +21,13 @@ A blog-style CRUD (Create, Read, Update, Delete) web application built using **P
 
 ## 🛠 Tech Stack
 
-**Frontend:** HTML, CSS
+- **Frontend:** HTML, CSS
 
-**Backend:** PHP 8.0.30
+- **Backend:** PHP 8.0.30
 
-**Database:** MySQL
+- **Database:** MySQL
 
-**Local Server:** XAMPP
+- **Local Server:** XAMPP
 
 ## 🗄️ Database Schema
 **Database Name :- blog**
@@ -68,7 +68,7 @@ A blog-style CRUD (Create, Read, Update, Delete) web application built using **P
 - ✅ Length-limited input:
     - Username: max 20 chars
     - Password: max 12 chars
-📄 Full security overview: [SECURITY.md](./SECURITY.md)
+📄 Full security overview: [SECURITY.md](https://github.com/Manishankar-Mandapati/simple-crud-application?tab=security-ov-file)
 
 ## 📂 Folder Structure
 ```
