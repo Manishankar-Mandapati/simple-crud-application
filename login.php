@@ -4,6 +4,11 @@
     require_once('backend/errorHandler.php');
     session_start();
 
+    if(isset($_SESSION["username"])){
+        header("Location:index.php");
+        exit();
+    }
+
     $Warning = ["status" => false, "message" => ""];
     $success = ['status' => false, 'message' => ""];
 

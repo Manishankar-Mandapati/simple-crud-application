@@ -85,10 +85,8 @@ body{
 }
 
 .full-screen{
-    width: 100%;
-    height: 100%;
-    min-width: inherit;
-    min-height: inherit;
+    max-height: 100vh;
+    height: 88vh;
     /* background-color: red; */
 }
 
@@ -117,7 +115,7 @@ nav{
 
 .nav-links{
     /* border: 1px solid red; */
-    gap: 18px;
+    gap: 2rem;
 }
 
 .user{
@@ -139,6 +137,60 @@ nav{
     border-radius: 3px;
 }
 
+.box{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: red; */
+}
+
+.icon{
+    font-size: 28px;
+}
+
+.icon-text{
+    font-size: 14px;
+    position: absolute;
+    top: 45px;
+    display: none;
+    transition-duration:.3s;
+    padding: .5rem 1rem;
+    background-color: rgb(64, 64, 64);
+    border-radius: 3px;
+    text-wrap: nowrap;
+    animation: slideup .5s;
+    /* color: red; */
+}
+
+@keyframes slideup {
+    from{
+        opacity: 0;
+        transform: translateY(30%);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0%);
+    }
+}
+
+.icon-text::after{
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 1.2rem;
+    z-index: -1;
+    left: 50%;
+    transform:translateX(-50%) rotate(45deg);
+    width: 20px;
+    height: 20px;
+    background-color: rgb(64, 64, 64);
+}
+
+a:hover .icon-text{
+    display: inline;
+}
+
 .logout-btn{
     display: flex;
     justify-content: center;
@@ -158,9 +210,9 @@ nav{
     background-color: red;
 }
 
-.nav-links a:hover{
+/* .nav-links a:hover{
     color: rgb(73, 73, 251);
-}
+} */
 
 .nav-links .link:hover{
     background-color: var(--color-primary);
@@ -498,12 +550,12 @@ textarea{
 }
 
 .navlinks.active{
-    background-color: rgb(150, 150, 150);
+    background-color: rgba(150, 150, 150, 0.7);
 }
 
-.navlinks.active>a{
+/* .navlinks.active>a{
     color: black;
-}
+} */
 
 .main-section{
    width: 100%;

@@ -46,9 +46,9 @@
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    function getPosts($query,$conn,$bindValues=[]){
+    function getPosts($query,$conn,$bindValues=[]){ 
         $stmt = $conn->prepare($query);
-
+    
           foreach ($bindValues as $key => $value) {
             if (is_int($value)) {
                 $stmt->bindValue($key, $value, PDO::PARAM_INT);
@@ -60,6 +60,7 @@
                 $stmt->bindValue($key, $value, PDO::PARAM_STR);
             }
         }
+        
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }

@@ -89,7 +89,7 @@
                         <?php endforeach; ?>
                     <?php else: ?>
                         <tr>
-                            <td colspan="5">No users found.</td>
+                            <td colspan="5">No posts found.</td>
                         </tr>
                     <?php endif; ?>
                     </tbody>

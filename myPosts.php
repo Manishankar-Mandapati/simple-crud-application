@@ -6,6 +6,10 @@
 
     $user_id = $_SESSION['userid'];
 
+    if(!isset($_SESSION["username"])){
+        header("Location:index.php");
+    }
+
     $query = "SELECT COUNT(*) AS total FROM posts where user_id = :userid";
     $bindValues = [":userid" => $user_id];
     $total_posts = getTotalPosts($query, $conn, $bindValues);
