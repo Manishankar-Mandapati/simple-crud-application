@@ -69,7 +69,7 @@ if($total_posts > 0){?>
     <div class="pagination">
             <a class="btn" href="?search=<?php echo urlencode($search); ?>&search_button=Search&page_no=1">first</a>
 
-            <a class="btn" href="?search=<?php echo urlencode($search); ?>&search_button=Search&page_no=<?php echo $page > 1 ? $page - 1 : 1; ?>">&laquo; Previous</a>
+            <a class="btn" href="?search=<?php echo urlencode($search); ?>&search_button=Search&page_no=<?php echo $page > 1 ? $page - 1 : 1; ?>"><span class="arrow-icon">&laquo;</span> <span class="page-btn-text">Previous</span></a>
 
             <div class="page_buttons">
                 <?php for($i = $start; $i<= $end; $i++) {
@@ -79,7 +79,7 @@ if($total_posts > 0){?>
                 <?php } ?>
             </div>
 
-            <a class="btn" href="?search=<?php echo urlencode($search); ?>&search_button=Search&page_no=<?php echo $page < $total_pages ? $page + 1 : $total_pages; ?>">Next &raquo;</a>
+            <a class="btn" href="?search=<?php echo urlencode($search); ?>&search_button=Search&page_no=<?php echo $page < $total_pages ? $page + 1 : $total_pages; ?>"><span class="page-btn-text">Next</span> <span class="arrow-icon">&raquo;</span></a>
 
             <a class="btn" href="?search=<?php echo urlencode($search); ?>&search_button=Search&page_no=<?php echo $total_pages; ?>">last</a>
         </div>

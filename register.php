@@ -69,7 +69,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST')
     <title>Register</title>
 </head>
 <body>
-    <div class="full-screen flex-box content-center">
+    <div class="main-container flex-box content-center">
         <?php 
             if($Warning["status"]){
                 echo '<div class="warning-container success">

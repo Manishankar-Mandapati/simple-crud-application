@@ -47,7 +47,9 @@
             <div class="search-form flex-box content-space">
                 <form action="" method="get" >
                     <input type="text" name="search" value="<?= $search; ?>" placeholder="search...">
-                    <button type="submit" name="search_button" class="btn">search</button>
+                    <input type="submit" name="search_button" class="btn"
+                    value="search"
+                    >
                 </form>
 
                 <div class="logo">
@@ -55,7 +57,7 @@
                 </div>
             </div>
             <div class="Add_button">
-                <a href="../createPost.php" class="btn">Add post</a>
+                <a href="../createPost.php" class="btn">+</a>
             </div>
         </div>
 
@@ -99,7 +101,7 @@
                 <!-- -----------pagination code------------->
             <div class="pagination">
                 <a href="?page_no=1<?= !empty($search) ? "&search=".urlencode($search): ""?>" class="btn">first</a>
-                <a href="?page_no=<?php echo  $page>1 ? $page-1 : 1; ?><?= !empty($search) ? "&search=".urlencode($search): ""?>" class="btn">&laquo; Previous</a>
+                <a href="?page_no=<?php echo  $page>1 ? $page-1 : 1; ?><?= !empty($search) ? "&search=".urlencode($search): ""?>" class="btn"><span class="arrow-icon">&laquo;</span> <span class="page-btn-text">Previous</span></a>
 
                 <div class="page_buttons">
                     <?php for($i = $start; $i<= $end; $i++) {
@@ -109,7 +111,7 @@
                     <?php } ?>
                 </div>
 
-                <a href="?page_no=<?php echo  $page<$total_pages ? $page+1 : $total_pages; ?><?= !empty($search) ? "&search=".urlencode($search): ""?>" class="btn">Next &raquo;</a>
+                <a href="?page_no=<?php echo  $page<$total_pages ? $page+1 : $total_pages; ?><?= !empty($search) ? "&search=".urlencode($search): ""?>" class="btn"><span class="page-btn-text">Next</span> <span class="arrow-icon">&raquo;</span></a>
                 <a href="?page_no=<?php echo $total_pages?><?= !empty($search) ? "&search=".urlencode($search): ""?>" class="btn">last</a>
                 </div>
             </div>

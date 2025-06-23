@@ -27,12 +27,12 @@ $formated_Date = $dateObj->format('d/m/y');
 <div class="main-container flex-box content-center">
     <?php 
         if($post[0]){ ?>
-           <div class="post-box flex-box flex-row ">
+           <div class="post-box">
                 <div class="img-box" >
                     <img src="https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=612x612&w=0&k=20&c=rnCKVbdxqkjlcs3xH87-9gocETqpspHFXu5dIGB4wuM=" alt="post-image">
                 </div>
-                    <div class="content-box flex-box flex-col">
-                    <div class="title-box flex-box flex-row content-center">
+                <div class="content-box">
+                    <div class="title-box">
                         <div class="title">
                             <h2><?php echo $post[0]['title'] ?></h2>
                         </div>

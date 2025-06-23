@@ -65,7 +65,7 @@
                     </div>
                 </div>
                 <div class="Add_button">
-                    <a href="userform.php" class="btn">Add User</a>
+                    <a href="userform.php" class="btn">+</a>
                 </div>
             </div>
 
@@ -105,7 +105,7 @@
                 
                 <div class="pagination">
                     <a href="?page_no=1" class="btn">first</a>
-                    <a href="?page_no=<?php echo  $page>1 ? $page-1 : 1; ?>" class="btn">&laquo; Previous</a>
+                    <a href="?page_no=<?php echo  $page>1 ? $page-1 : 1; ?>" class="btn"><span class="arrow-icon">&laquo;</span> <span class="page-btn-text">Previous</span></a>
 
                     <div class="page_buttons">
                         <?php for($i = $start; $i<= $end; $i++) {
@@ -115,7 +115,7 @@
                         <?php } ?>
                     </div>
 
-                    <a href="?page_no=<?php echo  $page<$total_pages ? $page+1 : $total_pages; ?><?= !empty($search) ? "&search=".urlencode($search): ""?>" class="btn">Next &raquo;</a>
+                    <a href="?page_no=<?php echo  $page<$total_pages ? $page+1 : $total_pages; ?><?= !empty($search) ? "&search=".urlencode($search): ""?>" class="btn"><span class="page-btn-text">Next</span> <span class="arrow-icon">&raquo;</span></a>
                     <a href="?page_no=<?php echo $total_pages?><?= !empty($search) ? "&search=".urlencode($search): ""?>" class="btn">last</a>
                 </div>
             </div>
